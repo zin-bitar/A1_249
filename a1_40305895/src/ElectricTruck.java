@@ -42,8 +42,10 @@ public class ElectricTruck extends Truck {
     //equals method
     @Override
     public boolean equals(Object o){
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
         ElectricTruck other = (ElectricTruck) o;
         return super.equals(other) && this.autonomy == other.autonomy;
     }

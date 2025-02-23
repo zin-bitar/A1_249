@@ -1,27 +1,32 @@
+package Vehicles;
+
 public class Car extends Vehicle {
 
     private int maxNumberOfPassengers;
+    private static int plateInt = 1000;
 
     //Default constructor
     public Car(){
         super();
         this.maxNumberOfPassengers = 0;
-        this.setPlateNumber("GC");
-        //**TO DO** Add license plate
+        this.setPlateNumber("GC" + plateInt);
+        plateInt++;
     }
 
     //Parametrized constructor
     public Car(String make, String model, int year, int maxNumberOfPassengers){
         super(make, model, year);
         this.maxNumberOfPassengers = maxNumberOfPassengers;
-        //**TO DO** Add license plate
+        this.setPlateNumber("GC" + plateInt);
+        plateInt++;
     }
 
     //Copy constructor
     public Car(Car other){
         super(other);
         this.maxNumberOfPassengers = other.maxNumberOfPassengers;
-        //**TO DO** Add license plate
+        this.setPlateNumber("GC" + plateInt);
+        plateInt++;
     }
 
     //Setters

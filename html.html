@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SocialSphere - A Mini Social Network</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f2f5;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .auth, .feed {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        input, textarea, button {
+            display: block;
+            width: 100%;
+            margin: 10px 0;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #1877f2;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #166fe5;
+        }
+        .post {
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
+        }
+        .post:last-child {
+            border-bottom: none;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="auth" id="authSection">
+            <h2>Welcome to SocialSphere</h2>
+            <input type="text" id="username" placeholder="Username">
+            <input type="password" id="password" placeholder="Password">
+            <button onclick="login()">Login</button>
+            <button onclick="signup()">Sign Up</button>
+            <p id="authMessage"></p>
+        </div>
+
+        <div class="feed hidden" id="feedSection">
+            <h2>Your Feed</h2>
+            <textarea id="postContent" placeholder="What's on your mind?"></textarea>
+            <button onclick="createPost()">Post</button>
+            <div id="posts"></div>
+            <button onclick="logout()">Logout</button>
+        </div>
+    </div>
+
+    <script>
+        let currentUser = null;
+        let users = JSON.parse(localStorage.getItem('users')) || {};
+        let posts = JSON.parse(localStorage.getItem('posts')) || [];
+
+        function saveData() {
+            localStorage.setItem('users', JSON.stringify(users));
+            localStorage.setItem('posts', JSON.stringify(posts));
+        }
+
+        function showSection(showSectionId, hideSectionId) {
+            document.getElementById(showSectionId).classList.remove('hidden');
+            document.getElementById(hideSectionId).classList.add('hidden');
+        }
+
+        function displayPosts() {
+            const postsDiv = document.getElementById('posts');
+            postsDiv.innerHTML = '';
+            posts.forEach(post => {
+                const postElement = document.createElement('div');
+                postElement.className = 'post';
+                postElement.innerHTML = `<strong>${post.user}</strong>: ${post.content} <small>${post.date}</small>`;
+                postsDiv.appendChild(postElement);
+            });
+        }
+
+        function login() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            if (users[username] && users[username].password === password) {
+                currentUser = username;
+                showSection('feedSection', 'authSection');
+                displayPosts();
+            } else {
+                document.getElementById('authMessage').textContent = 'Invalid credentials!';
+            }
+        }
+
+        function signup() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            if (!username || !password) {
+                document.getElementById('authMessage').textContent = 'Please fill in all fields!';
+                return;
+            }
+            if (users[username]) {
+                document.getElementById('authMessage').textContent = 'Username already taken!';
+            } else {
+                users[username] = { password };
+                saveData();
+                document.getElementById('authMessage').textContent = 'Sign up successful! Please log in.';
+            }
+        }
+
+        function createPost() {
+            const content = document.getElementById('postContent').value;
+            if (content && currentUser) {
+                posts.unshift({
+                    user: currentUser,
+                    content,
+                    date: new Date().toLocaleString()
+                });
+                document.getElementById('postContent').value = '';
+                saveData();
+                displayPosts();
+            }
+        }
+
+        function logout() {
+            currentUser = null;
+            showSection('authSection', 'feedSection');
+            document.getElementById('authMessage').textContent = '';
+        }
+
+        // Check if already logged in (for demo purposes)
+        if (currentUser) {
+            showSection('feedSection', 'authSection');
+            displayPosts();
+        }
+    </script>
+</body>
+</html>

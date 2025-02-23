@@ -1,8 +1,11 @@
+package Vehicles;
+
 public class Vehicle {
     private String plateNumber;
     private String make;
     private String model;
     private int year;
+    private boolean isLeased;
 
     //Default constructor
     public Vehicle() {
@@ -10,6 +13,7 @@ public class Vehicle {
         make = "";
         model = "";
         year = 0;
+        this.isLeased = false;
     }
 
     //Parametrized constructor
@@ -17,6 +21,7 @@ public class Vehicle {
         this.make = make;
         this.model = model;
         this.year = year;
+        this.isLeased = false;
     }
 
     //Copy constructor
@@ -24,6 +29,7 @@ public class Vehicle {
         this.make = vehicle.make;
         this.model = vehicle.model;
         this.year = vehicle.year;
+        this.isLeased = false;
     }
 
     //Setters & Getters
@@ -50,6 +56,12 @@ public class Vehicle {
     }
     public void setYear(int year) {
         this.year = year;
+    }
+    public boolean getIsLeased() {
+        return isLeased;
+    }
+    public void setIsLeased(boolean isLeased) {
+        this.isLeased = isLeased;
     }
 
 

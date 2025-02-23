@@ -1,26 +1,31 @@
+package Vehicles;
+
 public class ElectricCar extends Car {
     private int autonomy;
+    private static int plateInt = 1000;
 
     //Default constructor
     public ElectricCar(){
         super();
-        this.setPlateNumber("EC");
         this.autonomy = 0;
-        //**TO DO** Add license plate
+        this.setPlateNumber("EC" + plateInt);
+        plateInt++;
     }
 
     //Parametrized constructor
     public ElectricCar(String make, String model, int year, int maxNumberOfPassengers, int autonomy){
         super(make, model, year, maxNumberOfPassengers);
         this.autonomy = autonomy;
-        //**TO DO** Add license plate
+        this.setPlateNumber("EC" + plateInt);
+        plateInt++;
     }
 
     //Copy constructor
     public ElectricCar(ElectricCar other){
         super(other);
         this.autonomy = other.autonomy;
-        //**TO DO** Add license plate
+        this.setPlateNumber("EC" + plateInt);
+        plateInt++;
     }
 
     //Setters

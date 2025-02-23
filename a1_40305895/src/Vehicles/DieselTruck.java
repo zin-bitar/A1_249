@@ -1,12 +1,16 @@
-public class DieselTruck extends Truck{
+package Vehicles;
+
+public class DieselTruck extends Truck {
 
     private int fuelCapacity;
+    private static int plateInt = 1000;
 
     //Default constructor
     public DieselTruck(){
         super();
         this.fuelCapacity = 0;
-        this.setPlateNumber("DT");
+        this.setPlateNumber("DT" + plateInt);
+        plateInt++;
         //**TO DO** Add license plate
     }
 
@@ -14,14 +18,16 @@ public class DieselTruck extends Truck{
     public DieselTruck(String make, String model, int year, int maxCapacity, int fuelCapacity){
         super(make, model, year, maxCapacity);
         this.fuelCapacity = fuelCapacity;
-        //**TO DO** Add license plate
+        this.setPlateNumber("DT" + plateInt);
+        plateInt++;
     }
 
     //Copy constructor
     public DieselTruck(DieselTruck other){
         super(other);
         this.fuelCapacity = other.fuelCapacity;
-        //**TO DO** Add license plate
+        this.setPlateNumber("DT" + plateInt);
+        plateInt++;
     }
 
     //Setters

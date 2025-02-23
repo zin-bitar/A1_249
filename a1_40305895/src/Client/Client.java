@@ -1,3 +1,5 @@
+package Client;
+
 public class Client {
     private String name;
     private Lease[] leases;
@@ -30,7 +32,7 @@ public class Client {
     }
     @Override
     public String toString(){
-        return "Client: " + this.name + " " + this.leases;
+        return "Client.Client: " + this.name + " " + this.leases;
     }
 
     public boolean equals(Object other){

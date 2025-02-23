@@ -1,3 +1,5 @@
+package Vehicles;
+
 public class Truck extends Vehicle {
     private int maxCapacity;
 
@@ -5,21 +7,21 @@ public class Truck extends Vehicle {
     public Truck(){
         super();
         maxCapacity = 0;
-        //**TO DO** Add license plate
+
     }
 
     //Parametrized constructor
     public Truck(String make, String model, int year, int maxCapacity) {
         super(make, model, year);
         this.maxCapacity = maxCapacity;
-        //**TO DO** Add license plate
+
     }
 
     //Copy constructor
     public Truck(Truck other){
         super(other);
         this.maxCapacity = other.maxCapacity;
-        //**TO DO** Add license plate
+
     }
 
     //Setters

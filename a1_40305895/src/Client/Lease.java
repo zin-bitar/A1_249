@@ -1,3 +1,7 @@
+package Client;
+
+import Vehicles.Vehicle;
+
 public class Lease {
     private String date;
     private Vehicle vehicle;
@@ -31,7 +35,7 @@ public class Lease {
 
     @Override
     public String toString() {
-        return date+" "+vehicle.toString();
+        return "Ending date: " + date + " Vehicle" + vehicle.toString();
     }
 
     @Override

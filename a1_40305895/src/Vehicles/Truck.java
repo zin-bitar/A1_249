@@ -1,3 +1,5 @@
+package Vehicles;
+
 public class Truck extends Vehicle {
     private int maxCapacity;
 

@@ -1,8 +1,11 @@
+package Vehicles;
+
 public class Vehicle {
     private String plateNumber;
     private String make;
     private String model;
     private int year;
+    private boolean isLeased;
 
     //Default constructor
     public Vehicle() {
@@ -10,6 +13,7 @@ public class Vehicle {
         make = "";
         model = "";
         year = 0;
+        this.isLeased = false;
     }
 
     //Parametrized constructor
@@ -66,5 +70,13 @@ public class Vehicle {
         if(vehicle == null || (getClass() != vehicle.getClass())) return false;
         Vehicle otherVehicle = (Vehicle)vehicle;
         return this.make.equals(otherVehicle.make) && this.model.equals(otherVehicle.model) && this.year == otherVehicle.year;
+    }
+
+    public boolean getIsLeased() {
+        return isLeased;
+    }
+
+    public void setLeased(boolean leased) {
+        isLeased = leased;
     }
 }

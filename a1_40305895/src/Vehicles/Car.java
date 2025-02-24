@@ -1,3 +1,5 @@
+package Vehicles;
+
 public class Car extends Vehicle {
 
     private int maxNumberOfPassengers;

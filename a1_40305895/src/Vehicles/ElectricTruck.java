@@ -1,23 +1,25 @@
-public class ElectricCar extends Car {
+package Vehicles;
+
+public class ElectricTruck extends Truck {
     private int autonomy;
 
     //Default constructor
-    public ElectricCar(){
+    public ElectricTruck(){
         super();
-        this.setPlateNumber("EC");
+        this.setPlateNumber("ET");
         this.autonomy = 0;
         //**TO DO** Add license plate
     }
 
     //Parametrized constructor
-    public ElectricCar(String make, String model, int year, int maxNumberOfPassengers, int autonomy){
-        super(make, model, year, maxNumberOfPassengers);
+    public ElectricTruck(String make, String model, int year, int maxCapacity, int autonomy){
+        super(make, model, year, maxCapacity);
         this.autonomy = autonomy;
         //**TO DO** Add license plate
     }
 
     //Copy constructor
-    public ElectricCar(ElectricCar other){
+    public ElectricTruck(ElectricTruck other){
         super(other);
         this.autonomy = other.autonomy;
         //**TO DO** Add license plate
@@ -42,10 +44,11 @@ public class ElectricCar extends Car {
     //equals method
     @Override
     public boolean equals(Object o){
-        if(this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        ElectricCar other = (ElectricCar) o;
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
+        ElectricTruck other = (ElectricTruck) o;
         return super.equals(other) && this.autonomy == other.autonomy;
     }
 }
-

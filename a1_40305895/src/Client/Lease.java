@@ -1,3 +1,7 @@
+package Client;
+
+import Vehicles.Vehicle;
+
 public class Lease {
     private String date;
     private Vehicle vehicle;

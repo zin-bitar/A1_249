@@ -1,4 +1,6 @@
-public class DieselTruck extends Truck{
+package Vehicles;
+
+public class DieselTruck extends Truck {
 
     private int fuelCapacity;
 
